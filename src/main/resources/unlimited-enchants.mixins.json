@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "com.femboy.unlimitedenchants.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"EnchantmentMaxLevelMixin",
+		"EnchantmentCostMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
