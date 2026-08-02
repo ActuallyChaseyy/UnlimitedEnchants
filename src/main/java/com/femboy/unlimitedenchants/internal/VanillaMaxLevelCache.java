@@ -13,7 +13,6 @@ import java.util.Map;
  * Keyed by identity, not equals/hashCode, since definitions are effectively
  * singletons and the record's generated equals/hashCode would be far more
  * expensive to compute on every enchanting table roll.
- * <p>
  * Lives outside the mixin package deliberately - Mixin reserves that package for
  * mixin classes only and refuses to load anything else from it.
  */

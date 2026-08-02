@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * 11 "power" per level above the first), so left alone they'd only ever satisfy the
  * table's ~1-30 power range around vanilla's old levels, never the new, much higher
  * ones - the ceiling would go up but the table would never actually reach it.
- * <p>
  * Clamping the level fed into the cost formula to the enchantment's original max
  * level makes cost plateau past that point, so whenever the table's power would have
  * earned vanilla's top level, it now earns the configured top level instead - the

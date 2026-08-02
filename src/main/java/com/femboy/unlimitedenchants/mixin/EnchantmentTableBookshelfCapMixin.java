@@ -27,6 +27,10 @@ import java.util.List;
  * final result of a table roll to whatever BookshelfLevelCap says the current,
  * live bookshelf count actually allows - recomputed fresh here rather than cached
  * from slotsChanged, since that can run well before the player actually clicks.
+ * maxTableEnchant is folded in as a second, independent ceiling on top of that -
+ * BookshelfLevelCap's curve targets whichever of maxLevel/maxTableEnchant is lower,
+ * so the table can be capped below maxLevel without touching anvil combining,
+ * /enchant, or loot, which all still read maxLevel directly.
  */
 @Mixin(EnchantmentMenu.class)
 public abstract class EnchantmentTableBookshelfCapMixin {
@@ -43,7 +47,8 @@ public abstract class EnchantmentTableBookshelfCapMixin {
 		}
 
 		int bookshelves = this.access.evaluate(EnchantmentTableBookshelfCapMixin::countBookshelves, 0);
-		int cap = BookshelfLevelCap.capFor(bookshelves, ModConfig.getMaxLevel());
+		int ceiling = Math.min(ModConfig.getMaxLevel(), ModConfig.getMaxTableEnchant());
+		int cap = BookshelfLevelCap.capFor(bookshelves, ceiling);
 
 		cir.setReturnValue(original.stream()
 				.map(instance -> instance.level() > cap

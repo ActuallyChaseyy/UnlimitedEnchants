@@ -6,7 +6,6 @@ package com.femboy.unlimitedenchants.internal;
  * Without this, cheap, low-vanilla-max enchantments (Mending, Silk Touch, curses -
  * anything that vanilla caps at level 1) would satisfy their (plateaued) cost at
  * almost any power and jump straight to the configured max regardless of bookshelves.
- * <p>
  * Breakpoints: 0-15 bookshelves spans I-V, 15-20 spans V-XX, 20-30 spans XX up to
  * the configured maxLevel, and anything past 30 is fully open (capped only by
  * maxLevel itself). 15 bookshelves landing on level 5 deliberately mirrors vanilla's
